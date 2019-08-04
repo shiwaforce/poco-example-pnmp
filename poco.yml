@@ -1,0 +1,14 @@
+version: "3.0"
+maintainer: "operations@shiwaforce.com"
+
+environment:
+  include: docker/conf/default/conf.env
+
+plan:
+  default:
+    description: "local indítás"
+    docker-compose-file:
+      - docker/dc-db.yml
+      - docker/dc-phpmyadmin.yml
+      - docker/dc-server.yml
+      - docker/dc-proxy.yml

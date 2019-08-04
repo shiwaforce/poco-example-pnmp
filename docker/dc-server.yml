@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+  server:
+    build:
+      context: ${PROJECT_HOME}
+      dockerfile: docker/Dockerfile-server
+#    image: php:7.2-apache
+    depends_on:
+      - db
+    links:
+      - db
+    volumes:
+      - ${PROJECT_HOME}/backend:/var/www/html
+    logging:
+      options:
+        max-size: "10k"
+        max-file: "3"

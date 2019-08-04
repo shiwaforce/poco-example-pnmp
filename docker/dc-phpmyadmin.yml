@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.9
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: db
+    depends_on:
+      - db
+    links:
+      - db
+    logging:
+      options:
+        max-size: "10k"
+        max-file: "3"

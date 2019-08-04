@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+  db:
+    image: mysql:5.7
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: demo
+      MYSQL_USER: demo-user
+      MYSQL_PASSWORD: demo-password
+    volumes:
+      - ${MYSQL_DATA_DIR}:/var/lib/mysql
+      - ${PROJECT_HOME}/docker/conf/default/init.sql:/docker-entrypoint-initdb.d/init.sql
+    logging:
+      options:
+        max-size: "10k"
+        max-file: "3"
